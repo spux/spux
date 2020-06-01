@@ -1,0 +1,26 @@
+{
+  "name": "spux",
+  "version": "0.1.0",
+  "description": "single page user experience",
+  "main": "index.js",
+  "module": "web_modules/spux.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spux/spux.git"
+  },
+  "keywords": [
+    "spux"
+  ],
+  "author": "Melvin Carvalho <https://melvincarvalho.com/#me> (melvincarvalho@gmail.com)",
+  "bugs": {
+    "url": "https://github.com/spux/spux/issues"
+  },
+  "homepage": "https://github.com/spux/spux#readme",
+  "dependencies": {
+    "htm": "^3.0.4",
+    "preact": "^10.4.1"
+  }
+}
