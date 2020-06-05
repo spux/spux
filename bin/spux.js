@@ -22,6 +22,6 @@ data.input = fs.readFileSync(data.inputURI)
 var viewAttribute = data.view ? ` view="${data.view}"` : ``
 var html = `<script type="application/ld+json" id="data"${viewAttribute}>
 ${data.input.toString()}</script>
-<script type="module" src="https://cdn.jsdelivr.net/gh/spux/spux-shim/web_modules/spux-shim.js"></script>`
+<script type="module" src="https://unpkg.com/spux-shim/web_modules/spux-shim.js"></script>`
 
 console.log(html)
