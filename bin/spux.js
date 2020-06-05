@@ -13,7 +13,7 @@ globalThis.data = {
 data.inputURI = process.argv[2] || data.inputURI
 
 // MAIN
-console.error(`reading file ${data.input}`)
+// console.error(`reading file ${data.inputURI}`)
 data.input = fs.readFileSync(data.inputURI)
 
 console.log(`<script type="application/ld+json" id="data">
