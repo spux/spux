@@ -1,9 +1,12 @@
 {
   "name": "spux",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "single page user experience",
   "main": "index.js",
   "module": "web_modules/spux.js",
+  "bin": {
+    "spux": "bin/spux.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,7 +23,9 @@
   },
   "homepage": "https://github.com/spux/spux#readme",
   "dependencies": {
+    "fs": "0.0.1-security",
     "htm": "^3.0.4",
-    "preact": "^10.4.1"
+    "preact": "^10.4.1",
+    "shelljs": "^0.8.4"
   }
 }
