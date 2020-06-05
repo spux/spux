@@ -25,6 +25,7 @@
   "dependencies": {
     "fs": "0.0.1-security",
     "htm": "^3.0.4",
+    "minimist": "^1.2.5",
     "preact": "^10.4.1",
     "shelljs": "^0.8.4"
   }
