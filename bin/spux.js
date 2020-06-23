@@ -15,7 +15,7 @@ globalThis.data = {
 // FUNCTIONS
 function validURL (str) {
   var pattern = new RegExp(
-    '^(https?:\\/\\/)?', // protocol
+    '^(https?:\\/\\/)', // protocol
     'i'
   )
   return !!pattern.test(str)
