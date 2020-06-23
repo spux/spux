@@ -9,7 +9,8 @@ var argv = require('minimist')(process.argv.slice(2))
 globalThis.data = {
   inputURI: 'package.json',
   view: null,
-  cdn: 'https://jspm.dev/spux-rocks'
+  cdn: 'https://jspm.dev/spux-rocks',
+  css: null
 }
 
 // FUNCTIONS
@@ -24,6 +25,11 @@ function validURL (str) {
 // INIT
 data.inputURI = argv._[0] || data.inputURI
 data.view = argv.view || data.view
+data.css = argv.css || data.css
+var css = data.css
+  ? `<link href="${data.css}" rel="stylesheet" />
+`
+  : ''
 
 if (data.view && !validURL(data.view)) {
   data.view = data.cdn + '/' + data.view + '.js'
@@ -34,7 +40,7 @@ if (data.view && !validURL(data.view)) {
 data.input = fs.readFileSync(data.inputURI)
 
 var viewAttribute = data.view ? ` view="${data.view}"` : ``
-var html = `<script type="application/ld+json" id="data"${viewAttribute}>
+var html = `${css}<script type="application/ld+json" id="data"${viewAttribute}>
 ${data.input.toString()}</script>
 <script type="module" src="https://unpkg.com/spux-shim/web_modules/spux-shim.js"></script>`
 
