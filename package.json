@@ -1,6 +1,6 @@
 {
   "name": "spux",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "single page user experience",
   "main": "index.js",
   "module": "web_modules/spux.js",
