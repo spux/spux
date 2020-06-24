@@ -9,7 +9,7 @@ var argv = require('minimist')(process.argv.slice(2))
 globalThis.data = {
   inputURI: 'package.json',
   view: null,
-  cdn: 'https://jspm.dev/spux-rocks',
+  cdn: 'https://unpkg.com/spux-rocks',
   css: null
 }
 
