@@ -7,7 +7,7 @@ var argv = require('minimist')(process.argv.slice(2))
 
 // MODEL
 globalThis.data = {
-  inputURI: 'package.json',
+  inputURI: null,
   view: null,
   cdn: 'https://unpkg.com/spux-rocks',
   css: null
@@ -41,7 +41,11 @@ if (data.view && !validURL(data.view)) {
 // console.error(`reading file ${data.inputURI}`)
 
 if (process.stdin.isTTY) {
-  data.input = fs.readFileSync(data.inputURI)
+  if (data.inputURI) {
+    data.input = fs.readFileSync(data.inputURI)
+  } else {
+    data.input = ''
+  }
   processData()
 } else {
   data.input = ''
