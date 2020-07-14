@@ -9,7 +9,7 @@ var argv = require('minimist')(process.argv.slice(2))
 globalThis.data = {
   inputURI: null,
   view: null,
-  cdn: 'https://unpkg.com/spux-rocks',
+  cdn: 'https://cdn.skypack.dev/spux-rocks',
   css: null
 }
 
