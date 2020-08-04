@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 // IMPORTS
-var shell = require('shelljs')
 var fs = require('fs')
 var argv = require('minimist')(process.argv.slice(2))
 
@@ -10,7 +9,8 @@ globalThis.data = {
   inputURI: null,
   view: null,
   cdn: 'https://cdn.skypack.dev/spux-rocks',
-  css: null
+  css: null,
+  src: null
 }
 
 // FUNCTIONS
@@ -34,6 +34,7 @@ var css = data.css
 if (data.view && !validURL(data.view)) {
   data.view = data.cdn + '/' + data.view + '.js'
 }
+data.src = argv.src || data.src
 
 // console.log('process.stdin.isTTY', process.stdin.isTTY)
 
@@ -67,7 +68,8 @@ if (process.stdin.isTTY) {
 
 function processData () {
   var viewAttribute = data.view ? ` view="${data.view}"` : ``
-  var html = `${css}<script type="application/ld+json" id="data"${viewAttribute}>
+  var srcAttribute = data.src ? ` src="${data.src}"` : ``
+  var html = `${css}<script type="application/ld+json" id="data"${viewAttribute}${srcAttribute}>
   ${data.input.toString()}</script>
   <script type="module" src="https://unpkg.com/spux-shim/web_modules/spux-shim.js"></script>`
 
