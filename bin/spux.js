@@ -10,7 +10,8 @@ globalThis.data = {
   view: null,
   cdn: 'https://cdn.skypack.dev/spux-rocks',
   css: null,
-  src: null
+  src: null,
+  script: null
 }
 
 // FUNCTIONS
@@ -26,8 +27,13 @@ function validURL (str) {
 data.inputURI = argv._[0] || data.inputURI
 data.view = argv.view || data.view
 data.css = argv.css || data.css
+data.script = argv.script || data.script
 var css = data.css
   ? `<link href="${data.css}" rel="stylesheet" />
+`
+  : ''
+var script = data.script
+  ? `<script src="${data.script}"></script>
 `
   : ''
 
@@ -69,7 +75,7 @@ if (process.stdin.isTTY) {
 function processData () {
   var viewAttribute = data.view ? ` view="${data.view}"` : ``
   var srcAttribute = data.src ? ` src="${data.src}"` : ``
-  var html = `${css}<script type="application/ld+json" id="data"${viewAttribute}${srcAttribute}>
+  var html = `${css}${script}<script type="application/ld+json" id="data"${viewAttribute}${srcAttribute}>
   ${data.input.toString()}</script>
   <script type="module" src="https://unpkg.com/spux-shim/web_modules/spux-shim.js"></script>`
 
