@@ -29,14 +29,16 @@ data.view = argv.view || data.view
 data.css = argv.css || data.css
 data.cdn = argv.cdn || data.cdn
 data.script = argv.script || data.script
+data.script = data.script ? data.script.split(',') : ''
 var css = data.css
   ? `<link href="${data.css}" rel="stylesheet" />
 `
   : ''
-var script = data.script
-  ? `<script src="${data.script}"></script>
-`
-  : ''
+var script = ''
+for (var i = 0; i < data.script.length; i++) {
+  script += `<script src="${data.script[i]}"></script>
+  `
+}
 
 if (data.view && !validURL(data.view)) {
   data.view = data.cdn + '/' + data.view + '.js'
