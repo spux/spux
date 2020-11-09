@@ -27,6 +27,7 @@ function validURL (str) {
 data.inputURI = argv._[0] || data.inputURI
 data.view = argv.view || data.view
 data.css = argv.css || data.css
+data.cdn = argv.cdn || data.cdn
 data.script = argv.script || data.script
 var css = data.css
   ? `<link href="${data.css}" rel="stylesheet" />
