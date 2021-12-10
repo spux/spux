@@ -6,16 +6,17 @@ var argv = require('minimist')(process.argv.slice(2))
 
 // MODEL
 globalThis.data = {
-  inputURI: null,
-  view: null,
-  cdn: 'https://cdn.skypack.dev/spux-rocks',
-  css: null,
-  src: null,
-  script: null
+  inputURI: null, // the JSON or stdin
+  view: null, // view attribute
+  cdn: 'https://cdn.skypack.dev/spux-rocks', // cdn
+  css: null, // css
+  src: null, // src for data island 
+  script: null, // scripts
+  module: null // modules for main script
 }
 
 // FUNCTIONS
-function validURL (str) {
+function validURL(str) {
   var pattern = new RegExp(
     '^(https?:\\/\\/)', // protocol
     'i'
@@ -29,6 +30,7 @@ data.view = argv.view || data.view
 data.css = argv.css || data.css
 data.cdn = argv.cdn || data.cdn
 data.script = argv.script || data.script
+data.module = argv.module || data.module
 data.script = data.script ? data.script.split(',') : ''
 var css = data.css
   ? `<link href="${data.css}" rel="stylesheet" />
@@ -75,12 +77,17 @@ if (process.stdin.isTTY) {
   })
 }
 
-function processData () {
+function processData() {
   var viewAttribute = data.view ? ` view="${data.view}"` : ``
+
   var srcAttribute = data.src ? ` src="${data.src}"` : ``
+
+  var mainScript = data.module ? `<script type="module" src="${data.module}"></script>` : `<script type="module" src="https://unpkg.com/spux-shim/web_modules/spux-shim.js"></script>`
+
   var html = `${css}${script}<script type="application/ld+json" id="data"${viewAttribute}${srcAttribute}>
   ${data.input.toString()}</script>
-  <script type="module" src="https://unpkg.com/spux-shim/web_modules/spux-shim.js"></script>`
+  ${mainScript}
+  `
 
   console.log(html)
 }
